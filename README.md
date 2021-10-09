@@ -27,7 +27,7 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 - MyBatis
 
 ## Architecture Diagram
-![](https://raw.githubusercontent.com/altanovela/microservice-baseframework/master/.res/architecture-diagram.jpg)
+![](https://raw.githubusercontent.com/commerce-case-study/a-documentation/main/diagram/service-architecture-diagram.JPG)
 
 ## Project Structure
 
@@ -36,7 +36,7 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 | Core ||||
 | Spring Cloud Gateway | core-gateway | 8101 | Application Server, used as API Gateway |
 | Spring Cloud Security | core-security | 8102 | Application Server, used as Central Authentication |
-| Discovery Service (Eureka) | core-discovery | 8103 | Application Server, used as Service Colaborator |
+| Spring Cloud Discovery (Eureka) | core-discovery | 8103 | Application Server, used as Service Colaborator |
 | Application ||||
 | Web Member | web-member | 8001 | Application Server, Service Consumer |
 | Service ||||
