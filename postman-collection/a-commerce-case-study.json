@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "d5a698c0-8067-4c14-be58-a36b29dc13a6",
+		"name": "a-commerce-case-study",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth/member/register",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "rahasia12345",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mobile-apps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"082124334111\",\r\n    \"email\": \"rio.bastian@metranet.co.id\",\r\n    \"username\": \"rio.bastian\",\r\n    \"password\": \"Password123\",\r\n    \"image\": \"http://here.iam/rio.bastian.jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8101/auth/member/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"auth",
+						"member",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
