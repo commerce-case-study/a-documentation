@@ -42,7 +42,7 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 | Service ||||
 | Service Member | service-member | 6101 | Application Server, Service Producer |
 
-## Pre Preparation
+## Preparation
 ```
 1. Created Database & Assign User:
    mysql> create database db_member;
