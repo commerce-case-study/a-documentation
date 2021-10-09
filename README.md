@@ -34,13 +34,14 @@ Dibuat dengan mempertimbangkan :
 
 | Application | Project Name | Port | Notes |
 | ------------ | ------------ | ------------ | ------------ |
+| Core ||||
 | Spring Cloud Gateway | core-gateway | 8101 | Application Server, used as API Gateway |
 | Spring Cloud Security | core-security | 8102 | Application Server, used as Central Authentication |
 | Discovery Service (Eureka) | core-discovery | 8103 | Application Server, used as Service Colaborator |
-| Application : Member | app-member | 8001 | Application Server, Service Consumer |
-| Service : Member | service-member-api | | Embedded Library, Supporting Service Producer |
-|| service-member-impl | 60101 | Application Server, Service Producer |
-| Library | lib-util | | Embedded Library, Common use Function |
+| Application ||||
+| Web Member | web-member | 8001 | Application Server, Service Consumer |
+| Service ||||
+| Service Member | service-member | 6101 | Application Server, Service Producer |
 
 ## Pre Preparation
 ```
@@ -61,32 +62,30 @@ Client Secret : rahasia12345
 ## Build & Run
 ```
 1. Git Clone
-$ git clone https://github.com/altanovela/microservice-baseframework.git
+$ git clone https://github.com/commerce-case-study/core-discovery-server.git
+$ git clone https://github.com/commerce-case-study/core-api-gateway.git
+$ git clone https://github.com/commerce-case-study/core-security-server.git
+$ git clone https://github.com/commerce-case-study/service-member.git
+$ git clone https://github.com/commerce-case-study/web-member.git
 
-2. Compile Supported Library 
-$ cd ${PROJECT_BASE}/lib-util/
-$ mvn -e clean install
-$ cd ${PROJECT_BASE}/service-member-api/
-$ mvn -e clean install
-
-3. Run Discovery Service (Eureka)
-$ cd ${PROJECT_BASE}/core-discovery/
+2. Run Discovery Server (Eureka)
+$ cd ${PROJECT_BASE}/core-discovery-server/
 $ mvn -e clean spring-boot:run
 
-4. Run Service : Member
-$ cd ${PROJECT_BASE}/service-member-impl/
+3. Run API Gateway Server
+$ cd ${PROJECT_BASE}/core-api-gateway/
 $ mvn -e clean spring-boot:run
 
-5. Run Spring Cloud Security
-$ cd ${PROJECT_BASE}/core-security/
+4. Run Security Server
+$ cd ${PROJECT_BASE}/core-security-server/
 $ mvn -e clean spring-boot:run
 
-6. Run Application : Member
-$ cd ${PROJECT_BASE}/core-security/
+5. Run Service : Member
+$ cd ${PROJECT_BASE}/service-member/
 $ mvn -e clean spring-boot:run
 
-7. Run Spring Cloud Gateway
-$ cd ${PROJECT_BASE}/core-gateway/
+6. Run Web : Member
+$ cd ${PROJECT_BASE}/web-member/
 $ mvn -e clean spring-boot:run
 ```
 
@@ -102,7 +101,8 @@ curl --location --request POST "http://localhost:8101/auth/member/register"
     \"email\": \"rio.bastian@metranet.co.id\",
     \"username\": \"rio.bastian\",
     \"password\": \"Password123\",
-    \"image\": \"http://here.iam/rio.bastian.jpeg\"
+    \"image\": \"http://here.iam/rio.bastian.jpeg\" 
+  \}"
 ```
 *Notes 
 ```
