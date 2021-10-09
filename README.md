@@ -23,7 +23,7 @@ Dibuat dengan mempertimbangkan :
 - Spring Cloud Security
 - Spring Cloud Discovery Service (Eureka)
 - Spring Boot
-- Sprng Data JPA
+- Spring Data JPA
 - Feign Client
 - MyBatis
 
