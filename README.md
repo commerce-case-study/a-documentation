@@ -1,4 +1,4 @@
-# Microservice Base Framework
+# Commerce Case Study
 
 [![Java](https://img.shields.io/badge/Java-1.8.0-red.svg?style=plastic)](https://www.oracle.com/java/technologies/)
 [![Maven](https://img.shields.io/badge/Maven-3.5.3-purple.svg?style=plastic)](https://maven.apache.org)
@@ -6,8 +6,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.3.2.RELEASE-green.svg?style=plastic)](https://spring.io/projects/spring-boot)
 [![My Batis](https://img.shields.io/badge/MyBatis-3.5.1-red.svg?style=plastic)](https://mybatis.org/mybatis-3/)
 
-Microservice Base Framework ini di buat sebagai acuan untuk mengembangkan framework aplikasi berbasis Java.
-Dibuat dengan mempertimbangkan :
+Commerce Case Study ini dibuat dengan mempertimbangkan :
 
 - Stateless Application
 - Centralized Authentication Service
