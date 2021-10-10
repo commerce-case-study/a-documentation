@@ -73,9 +73,9 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
    INSERT INTO oauth_client_details (client_id,client_secret,scope,authorized_grant_types,authorities,access_token_validity,refresh_token_validity) VALUES
 	 ('mobile-apps','$2y$12$qAD6hUSq9FOuvum4XKCBf.5o3/ZtOniJ4pYocfnZoLRvFVtrKRjCu','read,write','password','password,refresh_token,client_credentials,authorization_code',900,2592000);
 
-Notes
-Client Id     : mobile-apps
-Client Secret : rahasia12345
+   Notes
+   Client Id     : mobile-apps
+   Client Secret : rahasia12345
 
 3. Insert Seller
    INSERT INTO db_member.t_mem_member (email,image,password,phone,status,`type`,username) VALUES
@@ -150,4 +150,4 @@ $ mvn -e clean spring-boot:run
 ## Contributors
 | Name | Email | Role |
 | ------------ | ------------ | ------------ |
-| Rio Bastian | rio.bastian@metranet.co.id | Authors |
+| Rio Bastian | altanovela@gmail.com | Authors |
