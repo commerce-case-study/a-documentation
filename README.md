@@ -70,7 +70,8 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
    mysql> flush privileges;
    
 2. Run Application and Insert Initialize Client Data :
-   INSERT INTO db_member.oauth_client_details (client_id, access_token_validity, additional_information, authorities, autoapprove, client_secret, authorized_grant_types, web_server_redirect_uri, refresh_token_validity, resource_ids, `scope`) VALUES ('mobile-apps', 900, NULL, 'password,refresh_token,client_credentials,authorization_code', NULL, '$2y$12$qAD6hUSq9FOuvum4XKCBf.5o3/ZtOniJ4pYocfnZoLRvFVtrKRjCu', NULL, NULL, 2592000, NULL, 'read,write');
+   INSERT INTO oauth_client_details (client_id,client_secret,scope,authorized_grant_types,authorities,access_token_validity,refresh_token_validity) VALUES
+	 ('mobile-apps','$2y$12$qAD6hUSq9FOuvum4XKCBf.5o3/ZtOniJ4pYocfnZoLRvFVtrKRjCu','read,write','password','password,refresh_token,client_credentials,authorization_code',900,2592000);
 
 Notes
 Client Id     : mobile-apps
