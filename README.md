@@ -36,18 +36,19 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 | Core ||||
 | Spring Cloud Gateway | core-gateway | 8101 | Application Server, used as API Gateway |
 | Spring Cloud Security | core-security | 8102 | Application Server, used as Central Authentication |
-| Spring Cloud Discovery (Eureka) | core-discovery | 8103 | Application Server, used as Service Colaborator |
+| Spring Cloud Discovery (Eureka) | core-discovery | 8103 | Application Server, used as Service Coordinator |
 | Application ||||
 | Web Member | web-member | 8001 | Application Server, Service Consumer |
 | Service ||||
 | Service Member | service-member | 6101 | Application Server, Service Producer |
+| Service Product | service-product | 6102 | Application Server, Service Producer |
 
-## Pre Preparation
+## Preparation
 ```
 1. Created Database & Assign User:
-   mysql> create database db_member;
-   mysql> create user 'umember'@'%' identified with mysql_native_password by '123qwe';
-   mysql> grant all privileges on db_member.* to 'umember'@'%' with grant option;
+   mysql> create database db_commerce;
+   mysql> create user 'ucommerce'@'%' identified with mysql_native_password by '123qwe';
+   mysql> grant all privileges on db_commerce.* to 'ucommerce'@'%' with grant option;
    mysql> flush privileges;
 
 2. Run Application and Insert Initialize Client Data :
