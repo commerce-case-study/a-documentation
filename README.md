@@ -40,17 +40,17 @@ Commerce Case Study, it's build with considering the following aspect :
 | Application | Project Name | Port | Notes |
 | ------------ | ------------ | ------------ | ------------ |
 | Core ||||
-| Spring Cloud Gateway | core-gateway | 8101 | Application Server, used as API Gateway |
-| Spring Cloud Security | core-security | 8102 | Application Server, used as Central Authentication |
-| Spring Cloud Discovery (Eureka) | core-discovery | 8103 | Application Server, used as Service Coordinator |
+| Spring Cloud Gateway | <a href="https://github.com/commerce-case-study/core-api-gateway">core-api-gateway</a> | 8101 | Application Server, used as API Gateway |
+| Spring Cloud Security | <a href="https://github.com/commerce-case-study/core-security-server">core-security-server</a> | 8102 | Application Server, used as Central Authentication |
+| Spring Cloud Discovery (Eureka) | <a href="https://github.com/commerce-case-study/core-discovery-server">core-discovery-server</a> | 8103 | Application Server, used as Service Coordinator |
 | Service ||||
-| Service Member | service-member | 6101 | Application Server, Service Producer |
-| Service Product | service-product | 6102 | Application Server, Service Producer |
-| Service Trade | service-trade | 6103 | Application Server, Service Producer |
+| Service Member | <a href="https://github.com/commerce-case-study/service-member">service-member</a> | 6101 | Application Server, Service Producer |
+| Service Product | <a href="https://github.com/commerce-case-study/service-product">service-product</a> | 6102 | Application Server, Service Producer |
+| Service Trade | <a href="https://github.com/commerce-case-study/service-trade">service-trade</a> | 6103 | Application Server, Service Producer |
 | Application ||||
-| Web Member | web-member | 8001 | Application Server, Service Consumer |
-| Web Order | web-order | 8002 | Application Server, Service Consumer |
-| Web Payment | web-payment | 8003 | Application Server, Service Consumer |
+| Web Member | <a href="https://github.com/commerce-case-study/web-member">web-member</a> | 8001 | Application Server, Service Consumer |
+| Web Order | <a href="https://github.com/commerce-case-study/web-order">web-order</a> | 8002 | Application Server, Service Consumer |
+| Web Payment | <a href="https://github.com/commerce-case-study/web-payment">web-payment</a> | 8003 | Application Server, Service Consumer |
 
 ## Preparation
 ```
