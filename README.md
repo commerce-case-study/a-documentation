@@ -1,4 +1,4 @@
-# Commerce Case Study
+# <a href="https://github.com/orgs/commerce-case-study/repositories">Commerce Case Study</a>
 
 [![Java](https://img.shields.io/badge/Java-1.8.0-red.svg?style=plastic)](https://www.oracle.com/java/technologies/)
 [![Maven](https://img.shields.io/badge/Maven-3.5.3-purple.svg?style=plastic)](https://maven.apache.org)
@@ -20,7 +20,7 @@ Commerce Case Study, it's build with considering the following aspect :
 ## Technology Stack
 - Spring Cloud Gateway
 - Spring Cloud Security
-- Spring Cloud Discovery Service (Eureka)
+- Spring Cloud Discovery (Eureka)
 - Spring Boot
 - Spring Data JPA
 - Feign Client
@@ -151,6 +151,8 @@ $ mvn -e clean spring-boot:run
 
 ## API Documentation
 https://documenter.getpostman.com/view/457814/UV5RkzNs
+
+https://github.com/commerce-case-study/a-documentation/blob/main/sample-request-response.txt
 
 ## Contributors
 | Name | Email | Role |
