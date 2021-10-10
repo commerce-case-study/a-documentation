@@ -76,6 +76,25 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 Notes
 Client Id     : mobile-apps
 Client Secret : rahasia12345
+
+3. Insert Seller
+   INSERT INTO db_member.t_mem_member (email,image,password,phone,status,`type`,username) VALUES
+      ('rio.bastian.seller@metranet.co.id','http://here.iam/rio.bastian.jpeg','$2a$10$XsgU9gEPL/eax2Y5X9dj9.SJa5GaEJI6DXR4q.fiYlNLMjnAil6Du','082124334112','ACTIVE','SELLER','rio.bastian.seller');
+
+4. Insert Seller Address
+   INSERT INTO db_member.t_mem_member_address (address_line,city,district,member_id,name,notes,postal_code,province) VALUES
+   ('Mulia Busniess Park','Jakarta Selatan','Pancoran',6,'Rio Bastian Seller','Di seberang SPBU Pancoran','12701','DKI Jakarta');
+   
+5. Create Shop for Seller
+   INSERT INTO db_trade.t_trd_shop (member_address_id,member_id,shop_name,status) VALUES
+   (2,6,'Ribas Online Shop','ACTIVE');
+
+6. Insert Item to Seller Shop
+   INSERT INTO db_product.t_prd_item (name,price,quantity,shop_id) VALUES
+   ('Iphone 12 Pro',12500000.00,99,1),
+   ('Screeen Guard 5.5"',50000.00,99,1),
+   ('Samsung Max Pro',2100000.00,99,1);
+
 ```
 
 ## Build & Run
@@ -126,103 +145,6 @@ $ mvn -e clean spring-boot:run
 10. Run Web : Payment
 $ cd ${PROJECT_BASE}/web-payment/
 $ mvn -e clean spring-boot:run
-```
-
-## Sample API
-#### Register New Member
-cUrl Request :
-```
-curl --location --request POST "http://localhost:8101/auth/member/register" 
---header "Authorization: Basic bW9iaWxlLWFwcHM6cmFoYXNpYTEyMzQ1" 
---header "Content-Type: application/json" 
---data-raw "{
-    \"phone\": \"082124334111\",
-    \"email\": \"rio.bastian@metranet.co.id\",
-    \"username\": \"rio.bastian\",
-    \"password\": \"Password123\",
-    \"image\": \"http://here.iam/rio.bastian.jpeg\" 
-  \}"
-```
-*Notes 
-```
-Authorzation Basic is generated as follows Base64Encoder.encode(client-id:client-secret)
-```
-Response :
-```
-{
-  "id":6,
-  "username":"rio.bastian",
-  "email":"rio.bastian@metranet.co.id", 
-  "password":"$2a$10$UiMlTv.YTMBFfxnAnSqFwueTCtVsnbmiD.u/Wmao.c6mgBAoZVWqy", 
-  "type":"BUYER", 
-  "image":"http://here.iam/rio.bastian.jpeg", 
-  "status":"ACTIVE", 
-  "phone":"082124334111"
-}
-```
-
-#### Login and Get Token
-cUrl Request : 
-```
-curl --location --request POST "http://localhost:8101/oauth/token" \
---header "Authorization: Basic bW9iaWxlLWFwcHM6cmFoYXNpYTEyMzQ1" \
---header "Content-Type: application/x-www-form-urlencoded" \
---data-urlencode "grant_type=password" \
---data-urlencode "username=082124334111" \
---data-urlencode "password=Password123"
-```
-*Notes 
-```
-Authorzation Basic is generated as follows Base64Encoder.encode(client-id:client-secret)
-username attribute could be fill by username, email or phone number
-```
-Response :
-```
-{
-  "access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjE4NTgyMjcyLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.QvTsJVICMjp8hlwIgVQemPAv2Y56WWR2Lk6MYYiwGioLEszb3zbqXaZkpZJ4kfYQjNzuKzfwOVqwx55HqiL2dsHhIcFTrFwe273AJgid6G6ECPPZyB8dPkrnB6cuowDKCM6Z4DTt8TMrlPFIsub1Na9TyGPyYmMgM53oLm9D7mIPlzv6-LLZ8Oc_EVdSjhj-mzC13d_UtxlWzNB4yqX9WampsxBwmCztPqeZKeAgTdIAU2INhP8jUi8ilnxl_4ctcQ4T3KJGpX8lfbYOLIgVSPq_x2EtYBC3TODTrsrLiJGod8gc-1AIop7BC493u6-uDV4K2r3t_Cy_IggT60ARMA",
-  "token_type":"bearer",
-  "refresh_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjIxMTczMzcyLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.PSU3hLAAhYOYZ2AzmDrgDWLyvn1Le4Swyls8Q-imDbQKBohiNMPKPRzYhFEgBYuKQ3MIgoTw2R0j_BDWpdq7Stf_whjtt4DtDQAswA8NjqRtMBNqXpJPEmYXwK9nbVFQAIqs6cAyLPrwoI9ZYepSAg4MyfpuKnLBLZh5Pa9agVW-cTn-I2hShHhbqVG3bDIfJcx5svTI5eY5FkfDpSXPz8-O13y7z246oHcOs2fl8o2AelEbdTEF4BiUoLwy8YGoU1Xn0kxkhUw3QhSYHAnW98bwfNa6W2TbWcnC7JhLssLW-CGwWeTWivptUodUV_1_tgyypTZyE3bFUU_vForlhA",
-  "expires_in":899,
-  "scope":"read write",
-  "iss":"finbox-sec"
-}
-```
-
-#### Get Member Info (based on Token)
-cUrl Request :
-```
-curl --location --request GET "http://localhost:8101/api/member/info" \
---header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjE4NTgyMjcyLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.QvTsJVICMjp8hlwIgVQemPAv2Y56WWR2Lk6MYYiwGioLEszb3zbqXaZkpZJ4kfYQjNzuKzfwOVqwx55HqiL2dsHhIcFTrFwe273AJgid6G6ECPPZyB8dPkrnB6cuowDKCM6Z4DTt8TMrlPFIsub1Na9TyGPyYmMgM53oLm9D7mIPlzv6-LLZ8Oc_EVdSjhj-mzC13d_UtxlWzNB4yqX9WampsxBwmCztPqeZKeAgTdIAU2INhP8jUi8ilnxl_4ctcQ4T3KJGpX8lfbYOLIgVSPq_x2EtYBC3TODTrsrLiJGod8gc-1AIop7BC493u6-uDV4K2r3t_Cy_IggT60ARMA"
-```
-Response :
-```
-{
-    "id": 6,
-    "username": "rio.bastian",
-    "email": "rio.bastian@metranet.co.id",
-    "password": "$2a$10$UiMlTv.YTMBFfxnAnSqFwueTCtVsnbmiD.u/Wmao.c6mgBAoZVWqy",
-    "type": "BUYER",
-    "image": "http://here.iam/rio.bastian.jpeg",
-    "status": "ACTIVE",
-    "phone": "082124334111"
-}
-```
-
-#### Update Member Info (based on Token)
-cUrl Request :
-```
-curl --location --request POST "http://localhost:8101/api/member/update" \
---header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjE4NTgyMjcyLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.QvTsJVICMjp8hlwIgVQemPAv2Y56WWR2Lk6MYYiwGioLEszb3zbqXaZkpZJ4kfYQjNzuKzfwOVqwx55HqiL2dsHhIcFTrFwe273AJgid6G6ECPPZyB8dPkrnB6cuowDKCM6Z4DTt8TMrlPFIsub1Na9TyGPyYmMgM53oLm9D7mIPlzv6-LLZ8Oc_EVdSjhj-mzC13d_UtxlWzNB4yqX9WampsxBwmCztPqeZKeAgTdIAU2INhP8jUi8ilnxl_4ctcQ4T3KJGpX8lfbYOLIgVSPq_x2EtYBC3TODTrsrLiJGod8gc-1AIop7BC493u6-uDV4K2r3t_Cy_IggT60ARMA" \
---header "Content-Type: application/json" \
---data-raw "{
-    \"image\": \"http://here.iam/rio.bastian.2.jpeg\"
-}"
-```
-Response :
-```
-{
-    "msg":"Success Update Member"
-}
 ```
 
 ## Contributors
