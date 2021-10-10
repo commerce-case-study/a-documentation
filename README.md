@@ -27,7 +27,13 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 - MyBatis
 
 ## Architecture Diagram
-![](https://raw.githubusercontent.com/commerce-case-study/a-documentation/main/diagram/service-architecture-diagram.JPG)
+<img src="https://raw.githubusercontent.com/commerce-case-study/a-documentation/main/diagram/service-architecture-diagram.JPG" alt="drawing" width="900"/>
+
+## Service Relationship
+<img src="https://raw.githubusercontent.com/commerce-case-study/a-documentation/main/diagram/service-relationship.JPG" alt="drawing" width="600"/>
+
+## Service Discovery
+<img src="https://raw.githubusercontent.com/commerce-case-study/a-documentation/main/diagram/service-discovery.JPG" alt="drawing" width="700"/>
 
 ## Project Structure
 
@@ -37,20 +43,32 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
 | Spring Cloud Gateway | core-gateway | 8101 | Application Server, used as API Gateway |
 | Spring Cloud Security | core-security | 8102 | Application Server, used as Central Authentication |
 | Spring Cloud Discovery (Eureka) | core-discovery | 8103 | Application Server, used as Service Coordinator |
-| Application ||||
-| Web Member | web-member | 8001 | Application Server, Service Consumer |
 | Service ||||
 | Service Member | service-member | 6101 | Application Server, Service Producer |
 | Service Product | service-product | 6102 | Application Server, Service Producer |
+| Service Trade | service-trade | 6103 | Application Server, Service Producer |
+| Application ||||
+| Web Member | web-member | 8001 | Application Server, Service Consumer |
+| Web Order | web-order | 8002 | Application Server, Service Consumer |
+| Web Payment | web-payment | 8003 | Application Server, Service Consumer |
 
 ## Preparation
 ```
 1. Created Database & Assign User:
-   mysql> create database db_commerce;
+   ## db_member
+   mysql> create database db_member;
    mysql> create user 'ucommerce'@'%' identified with mysql_native_password by '123qwe';
-   mysql> grant all privileges on db_commerce.* to 'ucommerce'@'%' with grant option;
+   mysql> grant all privileges on db_member.* to 'ucommerce'@'%' with grant option;
    mysql> flush privileges;
-
+   ## db_product
+   mysql> create database db_product;
+   mysql> grant all privileges on db_product.* to 'ucommerce'@'%' with grant option;
+   mysql> flush privileges;
+   ## db_trade
+   mysql> create database db_trade;
+   mysql> grant all privileges on db_trade.* to 'ucommerce'@'%' with grant option;
+   mysql> flush privileges;
+   
 2. Run Application and Insert Initialize Client Data :
    INSERT INTO db_member.oauth_client_details (client_id, access_token_validity, additional_information, authorities, autoapprove, client_secret, authorized_grant_types, web_server_redirect_uri, refresh_token_validity, resource_ids, `scope`) VALUES ('mobile-apps', 900, NULL, 'password,refresh_token,client_credentials,authorization_code', NULL, '$2y$12$qAD6hUSq9FOuvum4XKCBf.5o3/ZtOniJ4pYocfnZoLRvFVtrKRjCu', NULL, NULL, 2592000, NULL, 'read,write');
 
@@ -66,7 +84,11 @@ $ git clone https://github.com/commerce-case-study/core-discovery-server.git
 $ git clone https://github.com/commerce-case-study/core-api-gateway.git
 $ git clone https://github.com/commerce-case-study/core-security-server.git
 $ git clone https://github.com/commerce-case-study/service-member.git
+$ git clone https://github.com/commerce-case-study/service-product.git
+$ git clone https://github.com/commerce-case-study/service-trade.git
 $ git clone https://github.com/commerce-case-study/web-member.git
+$ git clone https://github.com/commerce-case-study/web-order.git
+$ git clone https://github.com/commerce-case-study/web-payment.git
 
 2. Run Discovery Server (Eureka)
 $ cd ${PROJECT_BASE}/core-discovery-server/
@@ -84,8 +106,24 @@ $ mvn -e clean spring-boot:run
 $ cd ${PROJECT_BASE}/service-member/
 $ mvn -e clean spring-boot:run
 
-6. Run Web : Member
+6. Run Service : Product
+$ cd ${PROJECT_BASE}/service-product/
+$ mvn -e clean spring-boot:run
+
+7. Run Service : Trade
+$ cd ${PROJECT_BASE}/service-trade/
+$ mvn -e clean spring-boot:run
+
+8. Run Web : Member
 $ cd ${PROJECT_BASE}/web-member/
+$ mvn -e clean spring-boot:run
+
+9. Run Web : Order
+$ cd ${PROJECT_BASE}/web-order/
+$ mvn -e clean spring-boot:run
+
+10. Run Web : Payment
+$ cd ${PROJECT_BASE}/web-payment/
 $ mvn -e clean spring-boot:run
 ```
 
