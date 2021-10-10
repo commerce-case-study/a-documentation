@@ -150,9 +150,11 @@ $ mvn -e clean spring-boot:run
 ```
 
 ## API Documentation
-https://documenter.getpostman.com/view/457814/UV5RkzNs
-
-https://github.com/commerce-case-study/a-documentation/blob/main/sample-request-response.txt
+<ul>
+<li><a href="https://documenter.getpostman.com/view/457814/UV5RkzNs">Online Doc</a></li>
+<li><a href="https://github.com/commerce-case-study/a-documentation/blob/main/sample-request-response.txt">Sample Request Response</a></li>
+<li><a href="https://github.com/commerce-case-study/a-documentation/blob/main/postman-collection/a-commerce-case-study.json">Postman Collection</a></li>
+</ul>
 
 ## Contributors
 | Name | Email | Role |
