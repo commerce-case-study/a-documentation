@@ -1,0 +1,200 @@
+1.
+http://localhost:8101/api/member/pub/register (POST)
+
+Header :
+Authorization Basic (client_id:client_secret)
+Content-Type application/json
+
+Request :
+{
+    "phone": "082124334113",
+    "email": "rio.bastian.3@metranet.co.id",
+    "username": "rio.bastian.3",
+    "password": "Password123",
+    "image": "http://here.iam/rio.bastian.3.jpeg"
+}
+Response :
+{
+    "id": 8,
+    "username": "rio.bastian.3",
+    "email": "rio.bastian.3@metranet.co.id",
+    "password": "$2a$10$EEdgoRBJ1/ZRTUfNYLyPme3OoZhZbg929yfdFybfNQug.Kqg2FYeG",
+    "type": "BUYER",
+    "image": "http://here.iam/rio.bastian.3.jpeg",
+    "status": "ACTIVE",
+    "phone": "082124334113"
+}
+
+2. 
+http://localhost:8101/oauth/token (POST)
+
+Header :
+Authorization Basic (client_id:client_secret)
+Content-Type application/x-www-form-urlencoded
+
+Request :
+grant_type=password, username=082124334111, password=Password123
+Response :
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjMzODgzMzgwLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.jF3YweYhl79pb_Ffn99N8LmWCWY2LE9UQdZN-bWVhY7jVxsO9Je7-uwVPRMm4m1XOSEiKwV0GeIYfWVLJ_W3ca8BC-gnrtEafqOL91jOZtpYS0grJMJPYlezR6GRMGqYycnAf6Z_WVCaAiQL6Yjo7N2oFEBgACJ5VobN2UJecyNZMyiYoXmhs8ZcQK1g96pPKlupDebWo2xL3pet0dBaxcp1K1ZZ6-cd_qyhECiF2AxiP7l7LKDK8nggQDO53t-htCO1zXy9-1r6WSV6DlaD6soOsk9DjJP53PEGvFoP7csM6HfQ_Rp6vBtC9ICclbB5WNO8UNDNgcskyV0vEZLZeQ",
+    "token_type": "bearer",
+    "expires_in": 899,
+    "scope": "read write",
+    "iss": "finbox-sec"
+}
+
+3.
+http://localhost:8101/api/member/pvt/info (GET)
+
+Header :
+Authorization Bearer (access-token)
+
+Response :
+{
+    "id": 4,
+    "username": "rio.bastian",
+    "email": "rio.bastian@metranet.co.id",
+    "password": "$2a$10$XsgU9gEPL/eax2Y5X9dj9.SJa5GaEJI6DXR4q.fiYlNLMjnAil6Du",
+    "type": "BUYER",
+    "image": "http://here.iam/rio.bastian.jpeg",
+    "status": "ACTIVE",
+    "phone": "082124334111"
+}
+
+4.
+http://localhost:8101/api/order/create (POST)
+
+Header :
+Authorization Bearer (access-token)
+Content-Type application/json
+
+Request :
+{
+    "memberAddressId" : "1",
+    "items" : [
+        {
+            "itemId" : "23",
+            "quantity" : "2"
+        },
+        {
+            "itemId" : "98",
+            "quantity" : "1"
+        },
+        {
+            "itemId" : "67",
+            "quantity" : "2"
+        }
+    ],
+    "shopId" : "1",
+    "paymentType" : "Credit Card - BCA",
+    "courierName" : "JNE",
+    "courierServiceType" : "Reguler"
+}
+Response :
+{
+	"messsage":"success",
+	"order_code":"ORD1633873392832"
+}
+
+5.
+http://localhost:8101/api/order/ORD1633873392832 (GET)
+
+Header :
+Authorization Bearer (access-token)
+
+Response :
+{
+    "id": 6,
+    "memberId": 4,
+    "orderCode": "ORD1633873392832",
+    "status": "CREATED",
+    "shippingFee": 9000.00,
+    "totalPrice": 27200000.00,
+    "totalDiscount": 0.00,
+    "totalPayment": 27209000.00,
+    "orderItems": [
+        {
+            "id": 16,
+            "orderId": 6,
+            "itemId": 23,
+            "shopId": 1,
+            "itemName": "Iphone 12 Pro",
+            "itemPrice": 12500000.00,
+            "quantity": 2
+        },
+        {
+            "id": 17,
+            "orderId": 6,
+            "itemId": 98,
+            "shopId": 1,
+            "itemName": "Samsung Max Pro",
+            "itemPrice": 2100000.00,
+            "quantity": 1
+        },
+        {
+            "id": 18,
+            "orderId": 6,
+            "itemId": 67,
+            "shopId": 1,
+            "itemName": "Screeen Guard 5.5\"",
+            "itemPrice": 50000.00,
+            "quantity": 2
+        }
+    ],
+    "orderDelivery": {
+        "id": 6,
+        "orderId": 6,
+        "courierName": "JNE",
+        "serviceType": "Reguler",
+        "awbNumber": "AWB9987765543121",
+        "senderPhone": null,
+        "senderPostalCode": "41373",
+        "senderName": "Rio Bastian",
+        "senderProvince": "Jawa Barat",
+        "senderCity": "Karawang",
+        "senderDistrict": "Purwasari",
+        "senderFullAddress": "Perum Purwasari Permain Blok B No. 52",
+        "receiverPhone": null,
+        "receiverPostalCode": "12701",
+        "receiverName": "Rio Bastian Seller",
+        "receiverProvince": "DKI Jakarta",
+        "receiverCity": "Jakarta Selatan",
+        "receiverDistrict": "Pancoran",
+        "receiverFullAddress": "Mulia Busniess Park"
+    },
+    "orderPayment": null
+}
+
+6.
+http://localhost:8101/api/payment/create (POST)
+
+Header :
+Authorization Bearer (access-token)
+Content-Type application/json
+
+Request :
+{
+    "orderCode" : "ORD1633873392832",
+    "paymentType" : "Credit Card - BCA"
+}
+Response :
+{
+    "payment_url": "https://please-pay-your-order.here/payment/PYM1633873650187",
+    "payment_code": "PYM1633873650187"
+}
+
+7.
+http://localhost:8101/api/payment/pub/notification (POST)
+
+Header :
+Content-Type application/json
+
+Request :
+{
+    "paymentCode" : "PYM1633873650187",
+    "status" : "PAID"
+}
+Response :
+{
+    "message": "success"
+}

@@ -2,23 +2,24 @@
 	"info": {
 		"_postman_id": "d5a698c0-8067-4c14-be58-a36b29dc13a6",
 		"name": "a-commerce-case-study",
+		"description": "API Documentation for Commerce Case Study.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "auth/member/register",
+			"name": "api/member/pub/register",
 			"request": {
 				"auth": {
 					"type": "basic",
 					"basic": [
 						{
-							"key": "password",
-							"value": "rahasia12345",
+							"key": "username",
+							"value": "mobile-apps",
 							"type": "string"
 						},
 						{
-							"key": "username",
-							"value": "mobile-apps",
+							"key": "password",
+							"value": "rahasia12345",
 							"type": "string"
 						}
 					]
@@ -35,16 +36,255 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8101/auth/member/register",
+					"raw": "http://localhost:8101/api/member/pub/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8101",
 					"path": [
-						"auth",
+						"api",
 						"member",
+						"pub",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/member/pvt/info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjMzODc2NDA0LCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.svDjBfqIK1pZULkfd1Umr1ioNYIaC2Zt0emU9GearhL3pIxv7rylDh25E5wSIfB5ZPUCGrc2eWIM1OurDu9xSlKyn-qUMisuexwtz8e6rAG0KgmJPPhMMZ2uYhuvcPbtP03LVYEf0CfU-U8qohXf29jhd94zyWC9i6Zi2B0SDwx1-m8xiKPsVlL83xGxvVTUHWiZtSiFMTpG3DQeRU794X2kx7dl0lUrJX51qcc9ESnFs9oztXfYtXISnWaRBtbgD9FUZUkThrpNfbRth84SueOi6gdhxaicbmfbX89c7ZEuxoiA2-7yjYs4hYuJA2AIdCoMxiJCSRMh-rPpvGZx4g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8101/api/member/pvt/info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"api",
+						"member",
+						"pvt",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth/token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "mobile-apps",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "rahasia12345",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "082124334111",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password123",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8101/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/order/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjMzODc0MjcxLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.nUSOHsJR340mkS_bcU8Eglp2tJ23Uy6c30C75s0cFAnIQCoGOvvTC_F6ZCjJxHxmC3lIoxm7Rrj_Wix_YubneyOptVSjJ3mMi5VuRYsyexLjBEfb84b_Dam1589pHT12NBITb7-_rK2jAvq4XLfO2_hc_f3Dob4UBbw31vCsECCrKs7TUrSueTgCjZeLsBTfudXuMVCxP4fL_2Jxr1_Vu0X-84MYWDH8wn02FrvpbqwBiSDmrcTya0CTQfiRgqmKPAopxeIM2qv2Nhpgo2Ks0lKmICicCui3FOMTJdI5dYp1anmGQXytT5YVeOwDL3DBJno7eFHrh00U22OCvuuZaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"memberAddressId\" : \"1\",\r\n    \"items\" : [\r\n        {\r\n            \"itemId\" : \"23\",\r\n            \"quantity\" : \"2\"\r\n        },\r\n        {\r\n            \"itemId\" : \"98\",\r\n            \"quantity\" : \"1\"\r\n        },\r\n        {\r\n            \"itemId\" : \"67\",\r\n            \"quantity\" : \"2\"\r\n        }\r\n    ],\r\n    \"shopId\" : \"1\",\r\n    \"courierName\" : \"JNE\",\r\n    \"courierServiceType\" : \"Reguler\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8101/api/order/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"api",
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/order/detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjMzODc1NTYwLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.C2MRQPUnoSQzEtdFvxnlWwDUm68WFpZLOa9KOqbbFuj_3_Dx7GxkfGaP2u90kzsZY7LqXsMdNxebdgQOZt86o-l8T5-MOoTalkrmIIDjqkPB6Xx3gr1iJ3hEipiWn-dfvI4if8IHkhxksVbonEloQXORDI1vFVxnEcJwMpKOgZfnZGJkNBxPYUyGEkC06uy8EF56CEkEljjRtePxw2NqlcAKiQkG3oPJYzv0OKeGBgITI2jrFOAnUi0d26NKwFR81cV27ZDVjtfzCoWgIfVmquN-09iSNrAXa1nG6mFr756KblzcIIZY3DKKVQdKz9xpS-GAifgdXkUSSv7uhSPq4Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8101/api/order/ORD1633873392832",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"api",
+						"order",
+						"ORD1633873392832"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/payment/pvt/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmaW5ib3gtc2VjIiwiZXhwIjoxNjMzODc0MjcxLCJ1c2VyX25hbWUiOiJyaW8uYmFzdGlhbiIsImF1dGhvcml0aWVzIjpbIkJVWUVSIl0sImNsaWVudF9pZCI6Im1vYmlsZS1hcHBzIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.nUSOHsJR340mkS_bcU8Eglp2tJ23Uy6c30C75s0cFAnIQCoGOvvTC_F6ZCjJxHxmC3lIoxm7Rrj_Wix_YubneyOptVSjJ3mMi5VuRYsyexLjBEfb84b_Dam1589pHT12NBITb7-_rK2jAvq4XLfO2_hc_f3Dob4UBbw31vCsECCrKs7TUrSueTgCjZeLsBTfudXuMVCxP4fL_2Jxr1_Vu0X-84MYWDH8wn02FrvpbqwBiSDmrcTya0CTQfiRgqmKPAopxeIM2qv2Nhpgo2Ks0lKmICicCui3FOMTJdI5dYp1anmGQXytT5YVeOwDL3DBJno7eFHrh00U22OCvuuZaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderCode\" : \"ORD1633873392832\",\r\n    \"paymentType\" : \"Credit Card - BCA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8101/api/payment/pvt/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"api",
+						"payment",
+						"pvt",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/payment/pub/notification",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentCode\" : \"PYM1633873650187\",\r\n    \"status\" : \"PAID\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8101/api/payment/pub/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8101",
+					"path": [
+						"api",
+						"payment",
+						"pub",
+						"notification"
 					]
 				}
 			},
