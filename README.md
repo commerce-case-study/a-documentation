@@ -6,7 +6,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.3.2.RELEASE-green.svg?style=plastic)](https://spring.io/projects/spring-boot)
 [![My Batis](https://img.shields.io/badge/MyBatis-3.5.1-red.svg?style=plastic)](https://mybatis.org/mybatis-3/)
 
-Commerce Case Study ini dibuat dengan mempertimbangkan :
+Commerce Case Study, it's build with considering the following aspect :
 
 - Stateless Application
 - Centralized Authentication Service
@@ -69,7 +69,9 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
    mysql> grant all privileges on db_trade.* to 'ucommerce'@'%' with grant option;
    mysql> flush privileges;
    
-2. Run Application and Insert Initialize Client Data :
+2. Run the application please see 'Build & Run' section.
+
+3. Run Application and Insert Initialize Client Data :
    INSERT INTO oauth_client_details (client_id,client_secret,scope,authorized_grant_types,authorities,access_token_validity,refresh_token_validity) VALUES
 	 ('mobile-apps','$2y$12$qAD6hUSq9FOuvum4XKCBf.5o3/ZtOniJ4pYocfnZoLRvFVtrKRjCu','read,write','password','password,refresh_token,client_credentials,authorization_code',900,2592000);
 
@@ -77,19 +79,19 @@ Commerce Case Study ini dibuat dengan mempertimbangkan :
    Client Id     : mobile-apps
    Client Secret : rahasia12345
 
-3. Insert Seller
+4. Insert Seller
    INSERT INTO db_member.t_mem_member (email,image,password,phone,status,`type`,username) VALUES
       ('rio.bastian.seller@metranet.co.id','http://here.iam/rio.bastian.jpeg','$2a$10$XsgU9gEPL/eax2Y5X9dj9.SJa5GaEJI6DXR4q.fiYlNLMjnAil6Du','082124334112','ACTIVE','SELLER','rio.bastian.seller');
 
-4. Insert Seller Address
+5. Insert Seller Address
    INSERT INTO db_member.t_mem_member_address (address_line,city,district,member_id,name,notes,postal_code,province) VALUES
    ('Mulia Busniess Park','Jakarta Selatan','Pancoran',6,'Rio Bastian Seller','Di seberang SPBU Pancoran','12701','DKI Jakarta');
    
-5. Create Shop for Seller
+6. Create Shop for Seller
    INSERT INTO db_trade.t_trd_shop (member_address_id,member_id,shop_name,status) VALUES
    (2,6,'Ribas Online Shop','ACTIVE');
 
-6. Insert Item to Seller Shop
+7. Insert Item to Seller Shop
    INSERT INTO db_product.t_prd_item (name,price,quantity,shop_id) VALUES
    ('Iphone 12 Pro',12500000.00,99,1),
    ('Screeen Guard 5.5"',50000.00,99,1),
